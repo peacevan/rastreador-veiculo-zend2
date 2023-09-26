@@ -1,0 +1,61 @@
+
+
+<style>
+input[required], select[required], text[required], textArea[required]{
+    background-color: #FAF1F1;
+}
+</style>
+
+
+<?php echo $this->headLink()->prependStylesheet($this->basePath('/modulo/trafegus/css/admin-default.css')) ?>
+<script src="<?php echo $this->basePath('/modulo/trafegus/js/grid-vinculo.js') ?>" type="text/javascript"></script>
+<div class="row">
+
+    <div class="panel panel-default sgc_border-grid">
+        <div class="panel-heading"><span class="sgc_color-grid"> Motorista </span> - Cadastro de Motorista</div>
+        <br>
+        <div class="col-lg-12 col-md-12">
+            <div id="resInstancia">
+                <div  class="sgc-espacamento">
+                    <table id="dg" class="easyui-datagrid ddg" pagination="true"  title="Cadastro de Veiculos" width="100%"  url="/public/veiculo/getGridVeiculo"
+                           data-options="
+                           remoteSort:false,
+                           multiSort:true,
+                           singleSelect:true,
+                           onLoadSuccess:loadSuccessEvent,
+                           pageList:[50,50,100,150,200],
+                           pageSize: 50,
+                           pagination:true,
+                           remoteFilter:true,
+                           toolbar:tb"
+                           >
+                        <thead>
+                            <tr>
+                                <th data-options="field:'id', sortable:false,hidden:true" width="10%" >id</th>
+                                <th data-options="field:'placa'" width="7%" >placa</th>
+                                <th data-options="field:'renavam'" width="15%" >renavam</th>
+                                <th data-options="field:'modelo'" width="20%" >modelo</th>
+                                <th data-options="field:'marca'" width="20%" >marca</th>
+                                <th data-options="field:'ano'" width="6%" >Ano</th>
+                                <th data-options="field:'cor'" width="11%" >Cor</th>
+                                <th data-options="field:'opcao',align:'center'" width="15%">Opções</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div id="tb" class="col-lg-12 sgc-grid-espacamento">
+                        <div class="col-lg-3">
+                            <a id="realod" class="btn btn-success btn-sm sgc_combobox_height" href="<?=$this->url('veiculo', array('action' => 'add'))?>">
+                                <i class="glyphicon glyphicon-plus-sign"></i>Cadastrar</a>
+                        </div>
+
+                        <div class="col-lg-6 sgc_div">
+                        </div>
+                    </div>
+                    <div id="sis_paginator">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

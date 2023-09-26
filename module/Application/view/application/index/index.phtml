@@ -1,0 +1,12 @@
+
+<div class="hero-unit">
+    <h1><?php echo sprintf($this->translate('Rastreamento de %sVeículo %s'), '<span class="zf-green">', '</span>') ?></h1>
+     <p>Clique no Maker para visualizar mais informações.</p>   
+    <div id="mapDiv" style="height: 400px; width: 100%;"></div>
+</div>
+<p><a class="btn btn-success btn-large" href="#" onclick="inicializarMapa()"><?php echo $this->translate('Carregar Mapa') ?> &raquo;</a></p>
+<script  async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk9Et4tD6g1m4KjPuZ97ZJLaj0gGSJrME&callback=initMap">
+</script>
+</div>
+

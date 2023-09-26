@@ -1,0 +1,80 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/style.css') 
+                        ->prependStylesheet($this->basePath('modulo/trafegus/css/default.css'))
+                        ->prependStylesheet($this->basePath('vendor/FontAwesome/css/fontawesome-all.min.css')) // FONTAWESOME STYLES
+                        ->prependStylesheet($this->basePath('vendor/jQueryEasyUI/themes/default/easyui.css')) // estilo e tema jqueryEasyUI
+                ?>
+                        
+                    
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                                      ->prependFile($this->basePath() . '/js/tiny_mce/jquery.tinymce.js')
+                                      ->prependFile($this->basePath() . '/js/jquery.min.js') 
+                                      ->prependFile($this->basePath() . '/js/google-map.js') 
+                                      ->prependFile($this->basePath('vendor/jQueryEasyUI-extension/datagrid-filter.js'))
+                                      ->prependFile($this->basePath('vendor/jQueryEasyUI-extension/datagrid-detailview.js'))
+                                      ->prependFile($this->basePath('vendor/jQueryEasyUI/easyloader.js'))
+                                      ->prependFile($this->basePath('vendor/jQueryEasyUI/locale/easyui-lang-pt_BR.js'))
+                                      ->prependFile($this->basePath('vendor/jQueryEasyUI/jquery.easyui.min.js'))
+                                       ->prependFile($this->basePath('js/custom.js')) // METISMENU SCRIPTS -->
+                                      ->prependFile($this->basePath('vendor/jQuery-plugins/jquery.metisMenu.js')) // METISMENU SCRIPTS -->
+                                   ->prependFile($this->basePath('vendor/jQuery-plugins/jquery.maskedinput.min.js'))// mascaras
+                                      ->prependFile($this->basePath('vendor/jQuery-plugins/jquery-maskmoney.js'))// mascaras R$ - REFFER http://plentz.github.io/jquery-maskmoney/
+                                      ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      ->prependFile($this->basePath('vendor/jQuery/jquery.min.js'))
+                                      ?>
+</head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="<?php echo $this->url('home') ?>">Crud Motorista|Veículo </a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Localização Veículo') ?></a></li>
+                            <li><a href="<?php echo $this->url('motorista') ?>"><?php echo $this->translate('Motorista') ?></a></li>
+                            <li><a href="<?php echo $this->url('veiculo') ?>"><?php echo $this->translate('Veiculo') ?></a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+        
+        	<?php if(isset($successMessages)) : ?>
+				<ul class="flash-messages unstyled">
+				    <?php foreach ($successMessages as $flashMessage) : ?>
+				    <li><?php echo $this->ztbAlert()->success($flashMessage); ?></li>
+				    <?php endforeach; ?> 
+				</ul>
+			<?php endif; ?>
+        
+            <?php echo $this->content; ?>
+            <hr>
+           <!-- <footer>
+             
+            </footer>-->
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

@@ -1,0 +1,134 @@
+<?php echo $this->doctype(); ?>
+<html lang="pt" ng-app="Trafegus">
+    <head>
+        <meta charset="utf-8">
+        <?php
+        echo $this->headTitle('Trafegus');
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+
+        //carrega os estilos
+        echo $this->headLink(array(
+                    'rel' => 'shortcut icon',
+                    'type' => 'image/vnd.microsoft.icon',
+                    'href' => $this->basePath() . '/modulo/Sgc/imagens/favicon.png')
+                )
+                ->prependStylesheet($this->basePath('modulo/Sgc/css/default.css'))
+                ->prependStylesheet($this->basePath('css/style.css')) //estilo padrão do site
+                ->prependStylesheet($this->basePath('vendor/FontAwesome/css/fontawesome-all.min.css')) // FONTAWESOME STYLES
+                ->prependStylesheet($this->basePath('vendor/jQueryEasyUI/themes/default/easyui.css')) // estilo e tema jqueryEasyUI
+                ->prependStylesheet($this->basePath('vendor/Bootstrap/css/bootstrap.min.css')); // estilo bootstrap
+        ?>
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath('vendor/jQueryEasyUI-extension/datagrid-filter.js'))
+                ->prependFile($this->basePath('vendor/jQueryEasyUI-extension/datagrid-detailview.js'))
+                ->prependFile($this->basePath('vendor/jQueryEasyUI/easyloader.js'))
+                ->prependFile($this->basePath('vendor/jQueryEasyUI/locale/easyui-lang-pt_BR.js'))
+                ->prependFile($this->basePath('vendor/jQueryEasyUI/jquery.easyui.min.js'))
+                ->prependFile($this->basePath('modulo/Sgc/js/default.js'))
+                ->prependFile($this->basePath('modulo/Base/js/default-project.js'))
+                ->prependFile($this->basePath('js/custom.js')) // METISMENU SCRIPTS -->
+                ->prependFile($this->basePath('vendor/jQuery-plugins/jquery.metisMenu.js')) // METISMENU SCRIPTS -->
+                ->prependFile($this->basePath('vendor/Bootstrap/js/bootstrap.min.js'))
+                ->prependFile($this->basePath('vendor/jQuery-plugins/jquery.maskedinput.min.js'))// mascaras
+                ->prependFile($this->basePath('vendor/jQuery-plugins/jquery-maskmoney.js'))// mascaras R$ - REFFER http://plentz.github.io/jquery-maskmoney/
+                ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('vendor/jQuery/jquery.min.js'))
+        ?>
+
+    </head>
+    <script type="text/javascript">
+        var System = {};
+        System.webroot = "<?php echo $this->serverUrl() ?>",
+        System.projeto = "<?php echo $this->serverUrl() ?>/trafegus",
+        System.public = "<?php $this->basePath() ?>",
+
+    </script>
+
+    <!--*IMPUT OBRIGATORIO - CSS e JS*-->
+    <style>
+        input[required], select[required], text[required], textArea[required]{
+            background-color: #FAF1F1;
+        }
+    </style>
+
+
+    <body>
+        <!-- /. WRAPPER  WEBSITE -->
+        <div id="wrapper">
+            <!-- NAVEGAÇÃO TOP  -->
+            <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="<?php echo $this->url('home') ?>">Cadastro  de Motorista</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Localização de Veículo') ?></a></li>
+                            <li><a href="<?php echo $this->url('motorista') ?>"><?php echo $this->translate('Motorista') ?></a></li>
+                            <li><a href="<?php echo $this->url('veiculo') ?>"><?php echo $this->translate('Veiculo') ?></a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+            <!-- NAVEGAÇÃO LATERAL  -->
+       
+            <!-- /. WRAPPER CONTEÚDO-->
+            <div id="page-wrapper">
+                <!-- /. PAGE INNER  -->
+                <div id="page-inner">
+                    <div class="flashTime">
+                        <?php
+                        print $this->flashMessenger()->render('error', array('alert', 'alert-dismissable', 'alert-danger', 'ul-msg'));
+                        print $this->flashMessenger()->render('info', array('alert', 'alert-dismissable', 'alert-info', 'ul-msg'));
+                        print $this->flashMessenger()->render('warning', array('alert', 'alert-dismissable', 'alert-warning', 'ul-msg'));
+                        print $this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success', 'ul-msg'));
+                        ?>
+                    </div>
+                    <div id="scren-modal">
+                        <i  class="fas fa-refresh fa-spin fa-4x"></i><span class="scren-load"> Carregando...</span>
+                    </div>
+                    <div class="modal fade" id="modalSistema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content" id="content-model-sgc">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                </div>
+                                <div class="modal-body" id="modalBody">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default modal-close" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="scren-button btn btn-primary hide">Salvar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <?php echo $this->content; ?>
+                    <!-- /. ROW  FOOTER -->
+                </div>
+                <div id="dialog" class="easyui-dialog" title="Menssagem" style="width:400px;min-height:150px;"
+                     data-options="iconCls:'icon-save',resizable:true,modal:true,closed: true,">
+                    <div id='ResMessage'></div>
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+
+            <!-- /. WRAPPER CONTEÚDO-->
+        </div>
+        <!-- /. WRAPPER  WEBSITE -->
+        <!-- SCRIPTS no final para reduzir tempo de carregamento -->
+    </body>
+</html>
