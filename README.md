@@ -1,8 +1,8 @@
 # Zend Framework 2 with Doctrine example application using ZendForm
 
-# Nome do projeto
+# rastreador-veiculo-zend2
 
-<!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
+
 
 
 
@@ -32,12 +32,21 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
-<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
-* Você instalou a versão mais recente de `<php7 / mysql / zend2>`
-* Você tem uma máquina `<Windows / Linux />`. Indique qual sistema operacional é compatível / não compatível.
-* Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
 
-## 🚀 Instalando <crud_motorista>
+* Você instalou a versão mais recente de `<php7 / mysql / zend2>`
+* Você tem uma máquina `<Windows / Linux />`. 
+
+* doctrine/common                  2.3.0
+* doctrine/dbal                    2.3.2
+* doctrine/doctrine-module         0.7.1
+* doctrine/doctrine-orm-module     0.7.0
+* doctrine/orm                     2.3.2
+* symfony/console                  v2.2.0
+* zendframework/zendframework      2.1.3
+
+* Você leu `https://zendframework.github.io/`.
+
+## 🚀 Instalando rastreador-veiculo-zend2
 
 # Requisitos Mínimos:
 
@@ -100,14 +109,18 @@ http://localhost:81/public/
 ``` 
 
 
-## ☕ Usando <nome_do_projeto>
+## ☕ Usando rastreador-veiculo-zend2
 
-Para usar <nome_do_projeto>, siga estas etapas:
+Para usar rastreador-veiculo-zend2, siga estas etapas:
 
 ```
 <exemplo_de_uso>
 ```
 # Banco de dados
+
+<img src="public/images/bancodedados.png" alt="exemplo imagem">
+
+>Tela de rastreamento de veiculo.
 
 
 # Tela  De Rastreamento de Veículo
@@ -146,12 +159,5 @@ Para usar <nome_do_projeto>, siga estas etapas:
 
 
 
-#### Versions Used
 
-* doctrine/common                  2.3.0
-* doctrine/dbal                    2.3.2
-* doctrine/doctrine-module         0.7.1
-* doctrine/doctrine-orm-module     0.7.0
-* doctrine/orm                     2.3.2
-* symfony/console                  v2.2.0
-* zendframework/zendframework      2.1.3
+
