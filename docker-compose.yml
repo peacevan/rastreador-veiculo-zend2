@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./config/jit.ini:/usr/local/etc/php/conf.d/jit.ini
+      - ./config/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
+     
+    networks:
+            - trafegus_test
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+       MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "3307:3307"
+    volumes:
+      - "./db:/var/lib/mysql"
+    networks:
+            - trafegus_test
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+            - trafegus_test
+networks:
+    trafegus_test:
+        driver: bridge
